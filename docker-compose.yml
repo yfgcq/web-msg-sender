@@ -1,0 +1,17 @@
+version: '3'
+#服务列表
+services:
+  web-msg-sender:
+#    image: yfgcq/wm-web-msg-sender:1.1
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    container_name: web-msg-sender
+    volumes:
+      - ./:/project:ro # 项目根目录
+    ports:
+      - "2320:2320"
+      - "2321:2321"
+      - "2323:2323"
+    command: /project/docker/run.sh
+    restart: always
